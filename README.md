@@ -2,7 +2,7 @@
 Rootkit Ring3 for Linux in progress
 
 To install the rootkit, follow these steps:
-1. First, make sure that the installation file `rkinstall.sh` has executable permissions, if not, type the command 'chmod +x rkinstall.sh':
+1. First, make sure that the installation file `rkinstall.sh` has executable permissions, if not, type the command `chmod +x rkinstall.sh:
 
 2. Run the installation script as root:
 
