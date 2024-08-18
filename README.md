@@ -17,7 +17,7 @@ Remember, this rootkit is intended for educational purposes and study only. Use 
 ![R4idB0y](img.png)
 
 
-H0TD0G 0.2
+# H0TD0G 0.2
 
 1. Now the rootkit layout is more interactive and beautiful.
 2. Now has a new function that you can disable IPTables
