@@ -1,4 +1,4 @@
-# ROOTKIT-RING3
+# H0TD0G 0.1
 Rootkit Ring3 for Linux in progress
 
 To install the rootkit, follow these steps:
@@ -6,7 +6,7 @@ To install the rootkit, follow these steps:
 
 2. Run the installation script as root:
 
-3. Open another terminal session as root and enter the following command to start the rootkit process (which operates invisibly within the system):
+3. Open another terminal session as root and enter the following command to start the rootkit process `kill 9999` (which operates invisibly within the system):
 
 4. You'll be prompted to enter a password. Use `ring3` to access the rootkit menu.
 
