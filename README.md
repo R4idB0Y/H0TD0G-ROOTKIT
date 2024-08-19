@@ -12,6 +12,8 @@ To install the rootkit, follow these steps:
 
 5. Once you've accessed the menu, you'll see various options available.
 
+6. To remove the rootkit the command `sudo sh -c 'echo "" > /etc/ld.so.preload`
+
 Remember, this rootkit is intended for educational purposes and study only. Use it responsibly and good luck!
 
 ![R4idB0y](img.png)
